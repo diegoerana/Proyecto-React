@@ -1,3 +1,5 @@
+import CartWidget from "./CartWidget"
+import ItemListContainer from './components/ItemListContainer';
 
 function Navbar() {
     return (
@@ -12,11 +14,12 @@ function Navbar() {
                         <a className="nav-item nav-link menu__links" href="">Nuestro-Armario</a>
                         <a className="nav-item nav-link menu__links" href="">Técnicas</a>
                         <a className="nav-item nav-link menu__links" href="">DIY BY US</a>
-                        <a className="nav-item nav-link menu__links" href="">Contacto</a>
-                        
+                        <a className="nav-item nav-link menu__links" href="">Contacto</a>  
                     </div>
-                </div>
+                    <CartWidget />
+                </div> 
 	        </nav>
+            
     )
 }
 
