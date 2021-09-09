@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget"
-import ItemListContainer from './components/ItemListContainer';
+
 
 function Navbar() {
     return (
