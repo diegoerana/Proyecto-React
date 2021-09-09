@@ -38,7 +38,7 @@ function ItemCount() {
                 <span>{isAdd}</span>
                 <button className="btn btn-primary" onClick={suma}>Agrega
                 </button>
-                <button className="btn btn-primary" onClick={onAdd}>Agrega a tu carrito al</button>
+                <button className="btn btn-primary" onClick={onAdd}>Agrega a tu carrito</button>
             </div>
         </div> 
         </>
