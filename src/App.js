@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     <Navbar /> 
-    <ItemListContainer greetings={"Bienvenidos a Batik de Bri, Tu lugar en la Moda."}/>
+    <ItemListContainer greeting={"Bienvenidos a Batik de Bri, Tu lugar en la Moda."}/>
     <ItemCount />
 
     </>
