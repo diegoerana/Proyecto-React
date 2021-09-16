@@ -17,16 +17,16 @@ const task = new Promise((res, rej) => {
 	setTimeout(() => res(items), 2000)
 });
 
-export default function ItemListContainer({greeting}) {
+export default function ItemListContainer() {
 	const [ itemlist, setItemlist ] = useState([]);
 
-	useEffect(()=>{
-		task.then(res => setItemlist(res), err => setItemlist(err));
-		console.log(itemlist);
-	}, [itemlist])
+	useEffect(() => {
+		task.then(res => setItemlist(res));
+	}, [])
 
 	return <div className="item-list-container">
 		<ItemList items={itemlist} />
 	</div>
 }
+
 

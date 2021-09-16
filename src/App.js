@@ -1,19 +1,23 @@
 
 import './App.css';
-import Navbar from './components/NavBar';
+import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
-    <>
-    <Navbar /> 
-    <ItemListContainer greeting={"Bienvenidos a Batik de Bri, Tu lugar en la Moda."}/>
-    <ItemCount />
-
-    </>
+    <div className="App">
+      <NavBar />
+      <header className="App-header">
+        <ItemListContainer />
+        <ItemDetailContainer />
+      </header>
+    </div>
   );
 }
 
 export default App;
+
+
