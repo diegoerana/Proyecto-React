@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react"
-import ItemDetail from "./ItemDetail";
-import alta7 from "../assets/alta7.jpg"
 
-const getItems = new Promise((res,rej) => {
-		setTimeout(() => res({ id:1, title:'Vestido Batik Monocromatico', price:5500, stock:4, pictureUrl:alta7}), 2000);
-})
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
+import { getProductById } from "../services/getData";
+import ItemDetail from "./ItemDetail";
 
 export default function ItemDetailContainer() {
 	const [ item, setItem ] = useState({});
-
+	const { id } = useParams();
+	
 	useEffect(() => {
-		getItems.then(res => setItem(res))
-		console.log(item);
-	},[])
+		getProductById(parseInt(id)).then(res => setItem(res))
+	},[id])
 
 	return <ItemDetail {...item} />
 }

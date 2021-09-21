@@ -1,4 +1,6 @@
+
 import { useState } from 'react'
+import './ItemCount.css';
 
 export default function ItemCount({ stock, initial, onAdd}) {
 	const [ counter, setCounter ] = useState(initial);
@@ -15,6 +17,6 @@ export default function ItemCount({ stock, initial, onAdd}) {
 			<span>{counter}</span>
 			<button onClick={() => contar(counter + 1)}>+</button>
 		</div>
-		<button onClick={() => onAdd(counter+' agregados')}>Agregar</button>
+		<button onClick={() => onAdd(counter)}>Agregar</button>
 	</div>
 }

@@ -1,32 +1,42 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import getCategories, { getCategory } from "../services/getData";
 import ItemList from "./ItemList";
-import alta7 from "../assets/alta7.jpg"
-import cartera from "../assets/accesorios2.png"
-import conjunto from "../assets/otoño2.jpg"
-import calza from "../assets/urbano1.jpg"
-
-
-const items = [
-	{ id:1, title:'Vestido Batik Monocromatico', price:5500, stock:4, pictureUrl:alta7},
-	{ id:2, title:'Cartera con Tecnica Multicolor', price:6400, stock:6, pictureUrl:cartera},
-	{ id:3, title:'Conjunto con tecnica Sky Blue', price:4800, stock:4, pictureUrl:conjunto},
-	{ id:4, title:'Calza Monocromatica', price:2800, stock:9, pictureUrl:calza}
-]
-
-const task = new Promise((res, rej) => {
-	setTimeout(() => res(items), 2000)
-});
+import './ItemListContainer.css'
 
 export default function ItemListContainer() {
-	const [ itemlist, setItemlist ] = useState([]);
+	const [ loading, setLoading ] = useState(false);
+	const [ categories, setCategories ] = useState([]);
+	const { name } = useParams();
 
 	useEffect(() => {
-		task.then(res => setItemlist(res));
-	}, [])
+		setLoading(true);
+		if (name) {
+			// Renderizar categoria por nombre
+			getCategory(name)
+				.then(res => {
+					setCategories([res])
+					setLoading(false);
+				})
+		} else {
+			// Renderizar todas las categorias
+			getCategories()
+				.then(res => {
+					setCategories(res)
+					setLoading(false);
+				});
+		}
+	}, [name])
 
-	return <div className="item-list-container">
-		<ItemList items={itemlist} />
-	</div>
+	if (loading) return <h1 className="loading">🕛</h1>
+
+	const categoriesList = categories.map(category => 
+	<div key={category.name} className="category flx-clmn-ctr">
+		<p>{category.icon} {category.name}</p>
+		<div className="item-list-container">
+			<ItemList items={category.items} />
+		</div>
+	</div>)
+
+	return <div className="categories">{categoriesList}</div>
 }
-
-

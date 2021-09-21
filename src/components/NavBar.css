@@ -1,0 +1,37 @@
+nav { 
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	background: #282c34;
+}
+
+nav a {
+	margin: 10px;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: border .2s;
+}
+
+nav a:hover {
+	border: 2px solid #666;
+}
+
+.current-nav {
+	border: 2px solid #61dafb;
+}
+
+/* Listado de categorias */
+nav > div {
+	display: flex;	
+}
+
+nav > div a {
+	margin: 10px .3em;
+}
+
+#carrito {
+	background-color: #fff2;
+}

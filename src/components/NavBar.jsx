@@ -1,27 +1,26 @@
-import CartWidget from "./CartWidget"
+import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import getCategories from '../services/getData';
+import CartWidget from './CartWidget';
+import './NavBar.css';
 
+export default function NavBar() {
+	const [ categories, setCategories ] = useState([])
+	useEffect(() => {
+		getCategories().then(res => setCategories(res))
+	},[categories])
 
-function Navbar() {
-    return (
-            <nav className="menu navbar navbar-expand-lg navbar-dark bg-dark">
-		        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-	   		        <span className="navbar-toggler-icon"></span>
-		        </button>
-		        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-			        <div className="navbar-nav">
-                        <a className="nav-item nav-link active menu__links" href="">Home</a>
-                        <a className="nav-item nav-link menu__links" href="">Otoño-Invierno</a>
-                        <a className="nav-item nav-link menu__links" href="">Nuestro-Armario</a>
-                        <a className="nav-item nav-link menu__links" href="">Técnicas</a>
-                        <a className="nav-item nav-link menu__links" href="">DIY BY US</a>
-                        <a className="nav-item nav-link menu__links" href="">Contacto</a>  
-                    </div>
-                    <CartWidget />
-                </div> 
-	        </nav>
-            
-    )
+	return <nav>
+		<Link className="brand" to="/">BatikdeBri</Link>
+		<div>
+			{categories.map(cat => <NavLink 
+				key={cat.name}
+				activeClassName="current-nav" 
+				title={cat.name} 
+				to={"/category/" + cat.name} 
+				>{cat.icon}</NavLink>
+			)}
+			<CartWidget />
+		</div>
+	</nav>
 }
-
-export default Navbar
-
