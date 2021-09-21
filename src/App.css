@@ -28,16 +28,19 @@ a {
 
 .item-list-container,
 .item,
+.item-list,
 .item div:first-child {
-  display: flex;
+  display: inline-block;
+  
 }
-
-.item-list-container {
+.item, .counter{
   flex-direction: column;
   /* padding: 0 20px; */
   border: 1px solid #61dafb;
   border-radius: 20px;
+  
 }
+
 
 .item {
   margin: 10px;
